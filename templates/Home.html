@@ -64,6 +64,29 @@
                         text: 'Categories'
                     }
                 }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        generateLabels: function(chart) {
+                            const data = chart.data;
+                            if (data.labels.length && data.datasets.length) {
+                                return data.labels.map(function(label, i) {
+                                    return {
+                                        text: label,
+                                        fillStyle: backgroundColors[i],
+                                        strokeStyle: borderColors[i],
+                                        lineWidth: 1,
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                            return [];
+                        }
+                    }
+                }
             }
         };
 
@@ -93,10 +116,12 @@
                 label: 'Total Expenses by Month',
                 data: amounts,
                 backgroundColor: [
-                    '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#2ecc71', '#e67e22', '#e74c3c', '#1abc9c', '#36A2EB'
+                    '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#2ecc71', 
+                    '#e67e22', '#e74c3c', '#1abc9c', '#36A2EB'
                 ],
                 borderColor: [
-                    '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#2ecc71', '#e67e22', '#e74c3c', '#1abc9c', '#36A2EB'
+                    '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#2ecc71', 
+                    '#e67e22', '#e74c3c', '#1abc9c', '#36A2EB'
                 ],
                 borderWidth: 1
             }]
@@ -115,6 +140,29 @@
                     title: {
                         display: true,
                         text: 'Months'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        generateLabels: function(chart) {
+                            const data = chart.data;
+                            if (data.labels.length && data.datasets.length) {
+                                return data.labels.map(function(label, i) {
+                                    return {
+                                        text: label,
+                                        fillStyle: data.datasets[0].backgroundColor[i],
+                                        strokeStyle: data.datasets[0].borderColor[i],
+                                        lineWidth: 1,
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                            return [];
+                        }
                     }
                 }
             }
