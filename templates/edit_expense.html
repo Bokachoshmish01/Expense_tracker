@@ -21,45 +21,34 @@
             <div class="mb-3">
                 <label for="expenseName" class="form-label">Expense Name</label>
                 <input type="text" class="form-control" id="expenseName" name="expenseName" value="{{ expense.title }}"
-                    >
+                    required>
             </div>
             <div class="mb-3">
                 <label for="expenseAmount" class="form-label">Expense Amount</label>
                 <input type="number" class="form-control" id="expenseAmount" name="expenseAmount"
-                    value="{{ expense.amount }}" >
+                    value="{{ expense.amount }}" required>
             </div>
             <div class="mb-3">
                 <label for="expenseDate" class="form-label">Expense Date</label>
                 <input type="date" class="form-control" id="expenseDate" name="expenseDate"
-                    value="{{ expense.expense_date }}">
-            </div>
-            <div class="mb-3">
-                <label for="expenseUser" class="form-label">User</label>
-                <select class="form-select" id="expenseUser" name="expenseUser">
-                    {% for user in users %}
-                    <option value="{{ user.id }}" {% if user.id==expense.user_id %}selected{% endif %}>
-                        {{ user.name }}</option>
-                    {% endfor %}
-                    <option selected>Select user</option>
-                </select>
+                    value="{{ expense.expense_date }}" required>
             </div>
             <div class="mb-3">
                 <label for="expenseCategory" class="form-label">Expense Category</label>
-                <select class="form-select" id="expenseCategory" name="expenseCategory">
+                <select class="form-select" id="expenseCategory" name="expenseCategory" required>
                     {% for category in cat %}
                     <option value="{{ category.id }}" {% if category.id==expense.category_id %}selected{% endif %}>
                         {{ category.name }}</option>
                     {% endfor %}
-                    <option selected>Select category</option>
                 </select>
                 <div class="text-center mt-3">
-                    <button type="submit" class="btn btn-primary">Update Expense</button>
+                    <button type="submit" class="btn btn-success">Update Expense</button>
                 </div>
             </div>
         </form>
     </div>
     <footer>
-        <p class="text-center">&copy; 2025 Expense Tracker</p>
+        <p class="text-center">&copy; 2025 Infinity Expense Tracker</p>
     </footer>
 </body>
 
